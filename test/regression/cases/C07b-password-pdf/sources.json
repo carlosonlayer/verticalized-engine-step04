@@ -1,0 +1,18 @@
+{
+  "extrato-protegido.pdf": {
+    "kind": "pdf_encrypted"
+  },
+  "pix-fornecedor-x.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 01/09/2026",
+      "Valor: R$ 1.250,00",
+      "Destinatário: FORNECEDOR X LTDA",
+      "CNPJ: 12.345.678/0001-95",
+      "ID da transação: E0000000020260711",
+      "Documento sintético para testes."
+    ]
+  }
+}

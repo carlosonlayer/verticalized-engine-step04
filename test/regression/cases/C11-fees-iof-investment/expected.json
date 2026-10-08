@@ -1,0 +1,95 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C11",
+  "slug": "fees-iof-investment",
+  "title": "Tarifas, IOF e aplicações",
+  "description": "Tarifa, IOF, aplicação, resgate e transferência entre contas do mesmo titular entram no saldo, mas NÃO exigem comprovante. Nenhuma pendência pode ser criada para elas.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "Lançamentos que não exigem comprovante",
+      "expect": "forbidden_finding:missing_receipt"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "pix-contabilidade.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-contabilidade.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 78000,
+      "date": "2026-09-12",
+      "counterparty": "CONTABILIDADE SILVA ME",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 6,
+    "transactions": [
+      {
+        "ref": "fitid:C11-01",
+        "kind": "fee",
+        "status": "no_receipt_needed"
+      },
+      {
+        "ref": "fitid:C11-02",
+        "kind": "fee",
+        "status": "no_receipt_needed"
+      },
+      {
+        "ref": "fitid:C11-03",
+        "kind": "investment",
+        "status": "no_receipt_needed"
+      },
+      {
+        "ref": "fitid:C11-04",
+        "kind": "investment",
+        "status": "no_receipt_needed"
+      },
+      {
+        "ref": "fitid:C11-05",
+        "kind": "own_transfer",
+        "status": "no_receipt_needed"
+      },
+      {
+        "ref": "fitid:C11-06",
+        "kind": "normal",
+        "status": "matched"
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C11-06",
+        "doc": "pix-contabilidade.pdf"
+      }
+    ],
+    "forbiddenConfirmations": [],
+    "requiredFindings": [],
+    "forbiddenFindings": [
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C11-01"
+      },
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C11-02"
+      },
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C11-03"
+      },
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C11-05"
+      }
+    ]
+  }
+}

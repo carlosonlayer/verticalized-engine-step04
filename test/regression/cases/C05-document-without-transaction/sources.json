@@ -1,0 +1,56 @@
+{
+  "extrato-setembro.ofx": {
+    "kind": "ofx"
+  },
+  "pix-fornecedor-x.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 01/09/2026",
+      "Valor: R$ 1.250,00",
+      "Destinatário: FORNECEDOR X LTDA",
+      "CNPJ: 12.345.678/0001-95",
+      "ID da transação: E0000000020260501",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-contabilidade.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 10/09/2026",
+      "Valor: R$ 780,00",
+      "Destinatário: CONTABILIDADE SILVA ME",
+      "CNPJ: 34.567.890/0001-21",
+      "ID da transação: E0000000020260502",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-eletricista-agosto.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 28/08/2026",
+      "Valor: R$ 900,00",
+      "Destinatário: JOSE PEREIRA",
+      "CPF: 529.982.247-25",
+      "ID da transação: E000000002026503",
+      "Documento sintético para testes."
+    ]
+  },
+  "nfse-beta.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "NOTA FISCAL DE SERVIÇO ELETRÔNICA - NFS-e",
+      "Número: 88",
+      "Data de emissão: 20/09/2026",
+      "Prestador: CONSULTORIA BETA LTDA",
+      "CNPJ: 11.222.333/0001-44",
+      "Valor total: R$ 1.500,00",
+      "Documento sintético para testes."
+    ]
+  }
+}

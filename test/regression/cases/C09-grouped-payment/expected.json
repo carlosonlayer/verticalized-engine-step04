@@ -1,0 +1,138 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C09",
+  "slug": "grouped-payment",
+  "title": "Pagamento agrupado",
+  "description": "Um PIX de R$ 3.000,00 paga três notas da mesma distribuidora (1.000 + 1.200 + 800). Há uma quarta nota (R$ 300,00) que NÃO faz parte do grupo. O grupo deve ser PROPOSTO (precisa confirmar), nunca confirmado automaticamente.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "1 pagamento = 3 notas",
+      "expect": "pending_match:grouped"
+    },
+    {
+      "text": "Grupo não pode ser confirmado automaticamente",
+      "expect": "forbidden_confirmation"
+    },
+    {
+      "text": "Nota de R$ 300,00 fora do grupo",
+      "expect": "finding:unmatched_document"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "nfe-delta-101.pdf",
+      "nfe-delta-102.pdf",
+      "nfe-delta-103.pdf",
+      "nfe-delta-104.pdf",
+      "pix-fornecedor-x.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "nfe-delta-101.pdf": {
+      "docType": "nfe_danfe",
+      "amountCents": 100000,
+      "date": "2026-09-01",
+      "counterparty": "DISTRIBUIDORA DELTA LTDA",
+      "legibility": "ok"
+    },
+    "nfe-delta-102.pdf": {
+      "docType": "nfe_danfe",
+      "amountCents": 120000,
+      "date": "2026-09-05",
+      "counterparty": "DISTRIBUIDORA DELTA LTDA",
+      "legibility": "ok"
+    },
+    "nfe-delta-103.pdf": {
+      "docType": "nfe_danfe",
+      "amountCents": 80000,
+      "date": "2026-09-10",
+      "counterparty": "DISTRIBUIDORA DELTA LTDA",
+      "legibility": "ok"
+    },
+    "nfe-delta-104.pdf": {
+      "docType": "nfe_danfe",
+      "amountCents": 30000,
+      "date": "2026-09-12",
+      "counterparty": "DISTRIBUIDORA DELTA LTDA",
+      "legibility": "ok"
+    },
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 2,
+    "transactions": [
+      {
+        "ref": "fitid:C09-01",
+        "status": "needs_confirmation"
+      }
+    ],
+    "documents": [
+      {
+        "file": "nfe-delta-104.pdf",
+        "status": "without_transaction"
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C09-02",
+        "doc": "pix-fornecedor-x.pdf"
+      }
+    ],
+    "requiredPendingMatches": [
+      {
+        "tx": [
+          "fitid:C09-01"
+        ],
+        "docs": [
+          "nfe-delta-101.pdf",
+          "nfe-delta-102.pdf",
+          "nfe-delta-103.pdf"
+        ],
+        "rule": "grouped"
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "fitid:C09-01",
+        "doc": "nfe-delta-101.pdf"
+      },
+      {
+        "tx": "fitid:C09-01",
+        "doc": "nfe-delta-102.pdf"
+      },
+      {
+        "tx": "fitid:C09-01",
+        "doc": "nfe-delta-103.pdf"
+      },
+      {
+        "tx": "fitid:C09-01",
+        "doc": "nfe-delta-104.pdf"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "grouped_payment",
+        "tx": "fitid:C09-01",
+        "why": "planted"
+      },
+      {
+        "type": "unmatched_document",
+        "doc": "nfe-delta-104.pdf",
+        "why": "planted"
+      }
+    ]
+  }
+}

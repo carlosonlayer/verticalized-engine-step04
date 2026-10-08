@@ -1,0 +1,18 @@
+{
+  "extrato-setembro.ofx": {
+    "kind": "ofx"
+  },
+  "pix-contabilidade.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 12/09/2026",
+      "Valor: R$ 780,00",
+      "Destinatário: CONTABILIDADE SILVA ME",
+      "CNPJ: 34.567.890/0001-21",
+      "ID da transação: E00000000202601106",
+      "Documento sintético para testes."
+    ]
+  }
+}

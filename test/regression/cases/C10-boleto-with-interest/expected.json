@@ -1,0 +1,89 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C10",
+  "slug": "boleto-with-interest",
+  "title": "Boleto pago com juros",
+  "description": "Boleto de R$ 1.000,00 com vencimento 10/09 pago em 16/09 por R$ 1.020,00 (multa de 2%). Par provável, mas com valor diferente: precisa confirmar, nunca confirmado automaticamente.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "Pago 6 dias após o vencimento com acréscimo de R$ 20,00",
+      "expect": "finding:paid_with_fees"
+    },
+    {
+      "text": "Par com acréscimo não pode ser confirmado automaticamente",
+      "expect": "pending_match:with_fees"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "boleto-escola-omega.pdf",
+      "pix-fornecedor-x.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "boleto-escola-omega.pdf": {
+      "docType": "boleto",
+      "amountCents": 100000,
+      "date": "2026-09-10",
+      "counterparty": "ESCOLA DE IDIOMAS OMEGA LTDA",
+      "legibility": "ok"
+    },
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 2,
+    "transactions": [
+      {
+        "ref": "fitid:C10-01",
+        "status": "needs_confirmation"
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C10-02",
+        "doc": "pix-fornecedor-x.pdf"
+      }
+    ],
+    "requiredPendingMatches": [
+      {
+        "tx": [
+          "fitid:C10-01"
+        ],
+        "docs": [
+          "boleto-escola-omega.pdf"
+        ],
+        "rule": "with_fees"
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "fitid:C10-01",
+        "doc": "boleto-escola-omega.pdf"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "paid_with_fees",
+        "tx": "fitid:C10-01",
+        "doc": "boleto-escola-omega.pdf",
+        "expectedCents": 102000,
+        "foundCents": 100000,
+        "diffCents": 2000,
+        "why": "planted"
+      }
+    ]
+  }
+}

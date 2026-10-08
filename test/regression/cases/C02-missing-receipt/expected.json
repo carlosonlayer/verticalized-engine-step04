@@ -1,0 +1,98 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C02",
+  "slug": "missing-receipt",
+  "title": "Comprovante faltando",
+  "description": "O PIX de R$ 780,00 do dia 03/09 não tem comprovante. O CPF do favorecido está na descrição do extrato e precisa sair mascarado.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "Saída de R$ 780,00 em 03/09 sem documento",
+      "expect": "finding:missing_receipt"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "pix-fornecedor-x.pdf",
+      "pix-grafica.pdf",
+      "boleto-aluguel.pdf",
+      "pix-padaria.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    },
+    "pix-grafica.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 32000,
+      "date": "2026-09-05",
+      "counterparty": "GRAFICA PAPEL BOM LTDA",
+      "legibility": "ok"
+    },
+    "boleto-aluguel.pdf": {
+      "docType": "boleto",
+      "amountCents": 199000,
+      "date": "2026-09-15",
+      "counterparty": "IMOBILIARIA LAR LTDA",
+      "legibility": "ok"
+    },
+    "pix-padaria.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 4500,
+      "date": "2026-09-25",
+      "counterparty": "PADARIA BOA LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 5,
+    "transactions": [
+      {
+        "ref": "fitid:C02-03",
+        "status": "missing_receipt"
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C02-01",
+        "doc": "pix-fornecedor-x.pdf"
+      },
+      {
+        "tx": "fitid:C02-02",
+        "doc": "pix-grafica.pdf"
+      },
+      {
+        "tx": "fitid:C02-04",
+        "doc": "boleto-aluguel.pdf"
+      },
+      {
+        "tx": "fitid:C02-05",
+        "doc": "pix-padaria.pdf"
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "fitid:C02-03",
+        "doc": "*"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C02-03",
+        "why": "planted"
+      }
+    ]
+  }
+}

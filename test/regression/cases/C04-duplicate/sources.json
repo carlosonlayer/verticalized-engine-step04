@@ -1,0 +1,60 @@
+{
+  "extrato-setembro.ofx": {
+    "kind": "ofx"
+  },
+  "pix-fornecedor-y.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 05/09/2026",
+      "Valor: R$ 350,00",
+      "Destinatário: FORNECEDOR Y LTDA",
+      "CNPJ: 78.901.234/0001-65",
+      "ID da transação: E0000000020260401",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-fornecedor-z.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 10/09/2026",
+      "Valor: R$ 120,00",
+      "Destinatário: FORNECEDOR Z LTDA",
+      "CNPJ: 89.012.345/0001-76",
+      "ID da transação: E0000000020260403",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-fornecedor-z-copia.pdf": {
+    "kind": "copy_of",
+    "of": "pix-fornecedor-z.pdf"
+  },
+  "nfse-445.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "NOTA FISCAL DE SERVIÇO ELETRÔNICA - NFS-e",
+      "Número: 445",
+      "Data de emissão: 10/09/2026",
+      "Prestador: SERVICOS GAMA LTDA",
+      "CNPJ: 90.123.456/0001-87",
+      "Valor total: R$ 600,00",
+      "Documento sintético para testes."
+    ]
+  },
+  "nfse-445-2via.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "NOTA FISCAL DE SERVIÇO ELETRÔNICA - NFS-e",
+      "Número: 445",
+      "Data de emissão: 10/09/2026",
+      "Prestador: SERVICOS GAMA LTDA",
+      "CNPJ: 90.123.456/0001-87",
+      "Valor total: R$ 600,00",
+      "2ª VIA",
+      "Documento sintético para testes."
+    ]
+  }
+}

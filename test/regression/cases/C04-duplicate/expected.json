@@ -1,0 +1,143 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C04",
+  "slug": "duplicate",
+  "title": "Duplicidades",
+  "description": "(a) Duas saídas iguais de R$ 350,00 para o mesmo fornecedor em dias seguidos, com UM comprovante: possível pagamento em duplicidade — nenhuma das duas pode ser confirmada. (b) O mesmo arquivo enviado duas vezes (mesmos bytes): a cópia é ignorada. (c) A mesma NFS-e enviada como 2ª via (bytes diferentes): documento duplicado.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "Saída repetida de R$ 350,00",
+      "expect": "finding:duplicate_transaction"
+    },
+    {
+      "text": "Duas saídas disputando o mesmo comprovante",
+      "expect": "finding:payment_duplication"
+    },
+    {
+      "text": "Arquivo idêntico enviado duas vezes",
+      "expect": "ignored_file"
+    },
+    {
+      "text": "Mesma NFS-e em 2ª via",
+      "expect": "finding:duplicate_document"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "pix-fornecedor-y.pdf",
+      "pix-fornecedor-z.pdf",
+      "pix-fornecedor-z-copia.pdf",
+      "nfse-445.pdf",
+      "nfse-445-2via.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-fornecedor-y.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 35000,
+      "date": "2026-09-05",
+      "counterparty": "FORNECEDOR Y LTDA",
+      "legibility": "ok"
+    },
+    "pix-fornecedor-z.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 12000,
+      "date": "2026-09-10",
+      "counterparty": "FORNECEDOR Z LTDA",
+      "legibility": "ok"
+    },
+    "nfse-445.pdf": {
+      "docType": "nfse",
+      "amountCents": 60000,
+      "date": "2026-09-10",
+      "counterparty": "SERVICOS GAMA LTDA",
+      "legibility": "ok"
+    },
+    "nfse-445-2via.pdf": {
+      "docType": "nfse",
+      "amountCents": 60000,
+      "date": "2026-09-10",
+      "counterparty": "SERVICOS GAMA LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 4,
+    "ignoredFiles": [
+      "pix-fornecedor-z-copia.pdf"
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C04-03",
+        "doc": "pix-fornecedor-z.pdf"
+      },
+      {
+        "tx": "fitid:C04-04",
+        "doc": [
+          "nfse-445.pdf",
+          "nfse-445-2via.pdf"
+        ]
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "fitid:C04-01",
+        "doc": "pix-fornecedor-y.pdf"
+      },
+      {
+        "tx": "fitid:C04-02",
+        "doc": "pix-fornecedor-y.pdf"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "duplicate_transaction",
+        "tx": [
+          "fitid:C04-01",
+          "fitid:C04-02"
+        ],
+        "why": "planted"
+      },
+      {
+        "type": "payment_duplication",
+        "doc": "pix-fornecedor-y.pdf",
+        "why": "planted"
+      },
+      {
+        "type": "duplicate_document",
+        "doc": [
+          "nfse-445.pdf",
+          "nfse-445-2via.pdf"
+        ],
+        "why": "planted"
+      }
+    ],
+    "allowedFindings": [
+      {
+        "type": "needs_confirmation",
+        "doc": "pix-fornecedor-y.pdf"
+      },
+      {
+        "type": "needs_confirmation",
+        "tx": [
+          "fitid:C04-01",
+          "fitid:C04-02"
+        ]
+      },
+      {
+        "type": "missing_receipt",
+        "tx": [
+          "fitid:C04-01",
+          "fitid:C04-02"
+        ]
+      }
+    ]
+  }
+}

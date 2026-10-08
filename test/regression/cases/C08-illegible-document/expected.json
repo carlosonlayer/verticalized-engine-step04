@@ -1,0 +1,140 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C08",
+  "slug": "illegible-document",
+  "title": "Documento ilegível",
+  "description": "Seis saídas e seis documentos: quatro PDFs, um print legível (PNG) e uma foto tremida ilegível. A foto ilegível precisa virar pendência explícita — nunca ser ignorada ou 'adivinhada'. 1 de 6 ilegível (≤ 20%) → trabalho concluído com pendência.",
+  "availableFrom": "STEP_10",
+  "plantedErrors": [
+    {
+      "text": "Foto ilegível",
+      "expect": "finding:unreadable_document"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "pix-fornecedor-x.pdf",
+      "pix-grafica.pdf",
+      "pix-contabilidade.pdf",
+      "pix-construcao.pdf",
+      "print-pix-padaria.png",
+      "foto-comprovante-tremida.png"
+    ]
+  },
+  "documentsTruth": {
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    },
+    "pix-grafica.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 32000,
+      "date": "2026-09-05",
+      "counterparty": "GRAFICA PAPEL BOM LTDA",
+      "legibility": "ok"
+    },
+    "pix-contabilidade.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 78000,
+      "date": "2026-09-10",
+      "counterparty": "CONTABILIDADE SILVA ME",
+      "legibility": "ok"
+    },
+    "pix-construcao.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 485000,
+      "date": "2026-09-12",
+      "counterparty": "CONSTRUCAO E CIA LTDA",
+      "legibility": "ok"
+    },
+    "print-pix-padaria.png": {
+      "docType": "pix_receipt",
+      "amountCents": 4500,
+      "date": "2026-09-25",
+      "counterparty": "PADARIA BOA LTDA",
+      "legibility": "ok"
+    },
+    "foto-comprovante-tremida.png": {
+      "docType": null,
+      "amountCents": null,
+      "date": null,
+      "counterparty": null,
+      "legibility": "illegible"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 6,
+    "documents": [
+      {
+        "file": "foto-comprovante-tremida.png",
+        "legibility": "illegible",
+        "amountCents": null,
+        "status": "illegible"
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C08-01",
+        "doc": "pix-fornecedor-x.pdf"
+      },
+      {
+        "tx": "fitid:C08-02",
+        "doc": "pix-grafica.pdf"
+      },
+      {
+        "tx": "fitid:C08-03",
+        "doc": "pix-contabilidade.pdf"
+      },
+      {
+        "tx": "fitid:C08-04",
+        "doc": "pix-construcao.pdf"
+      }
+    ],
+    "optionalConfirmations": [
+      {
+        "tx": "fitid:C08-05",
+        "doc": "print-pix-padaria.png"
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "*",
+        "doc": "foto-comprovante-tremida.png"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "unreadable_document",
+        "doc": "foto-comprovante-tremida.png",
+        "why": "planted"
+      }
+    ],
+    "allowedFindings": [
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C08-06"
+      },
+      {
+        "type": "needs_confirmation",
+        "tx": "fitid:C08-05"
+      },
+      {
+        "type": "needs_confirmation",
+        "doc": "print-pix-padaria.png"
+      },
+      {
+        "type": "unverified_extraction",
+        "doc": "print-pix-padaria.png"
+      }
+    ]
+  }
+}

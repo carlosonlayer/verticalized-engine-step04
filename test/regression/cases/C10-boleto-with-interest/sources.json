@@ -1,0 +1,31 @@
+{
+  "extrato-setembro.ofx": {
+    "kind": "ofx"
+  },
+  "boleto-escola-omega.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "BOLETO BANCÁRIO",
+      "Beneficiário: ESCOLA DE IDIOMAS OMEGA LTDA",
+      "CNPJ: 33.444.555/0001-66",
+      "Vencimento: 10/09/2026",
+      "Valor do documento: R$ 1.000,00",
+      "Nosso número: 009988",
+      "Após o vencimento: multa de 2%.",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-fornecedor-x.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 01/09/2026",
+      "Valor: R$ 1.250,00",
+      "Destinatário: FORNECEDOR X LTDA",
+      "CNPJ: 12.345.678/0001-95",
+      "ID da transação: E00000000202601002",
+      "Documento sintético para testes."
+    ]
+  }
+}

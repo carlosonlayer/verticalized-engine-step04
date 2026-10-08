@@ -1,0 +1,67 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C13",
+  "slug": "statement-only",
+  "title": "Somente extrato",
+  "description": "O usuário envia só o extrato. É um trabalho VÁLIDO: o resultado é a lista de quais saídas precisam de comprovante. Tarifa e entrada não entram na lista.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "Nenhum documento enviado",
+      "expect": "finding:missing_receipt"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": []
+  },
+  "documentsTruth": {},
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 6,
+    "transactions": [
+      {
+        "ref": "fitid:C13-05",
+        "status": "unmatched_credit"
+      },
+      {
+        "ref": "fitid:C13-06",
+        "kind": "fee",
+        "status": "no_receipt_needed"
+      }
+    ],
+    "confirmedMatches": [],
+    "forbiddenConfirmations": [
+      {
+        "tx": "*",
+        "doc": "*"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C13-01",
+        "why": "planted"
+      },
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C13-02",
+        "why": "planted"
+      },
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C13-03",
+        "why": "planted"
+      },
+      {
+        "type": "missing_receipt",
+        "tx": "fitid:C13-04",
+        "why": "planted"
+      }
+    ]
+  }
+}

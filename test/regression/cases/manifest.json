@@ -1,0 +1,113 @@
+{
+  "C01-perfect-month": {
+    "boleto-aluguel.pdf": "8407041050a85eb0fcfd7deda626c47fdbfb83f9a7c017400e6a400dd7e404ba",
+    "expected.json": "1622ec1dacd2d0a1b1ec92f320b8bce245fc25ab61cae1a66699b1ab99ab11b0",
+    "extrato-setembro.ofx": "1cdb21b446f3e9feae6ec11937cd2a85ba5fa8b0465c624e510666280736621e",
+    "pix-contabilidade.pdf": "e818397364d33c13b503e5b5afa23bce92cf48b4a82168bc59e1aab113abd651",
+    "pix-fornecedor-x.pdf": "924977ecab8498199168d5d635ed1c88f4a9a2fd1970fa90767c10175d482761",
+    "pix-grafica.pdf": "1a8ace2980adaf593b8770e2b4afcb0468e8c7089e3e3fa8c9473ebcc9099df1",
+    "pix-padaria.pdf": "39f5211ba4e93b449d9c098103ae3cd04039575b1d7af6a4491e65ad651020ef",
+    "sources.json": "97c336817a85c6a21d852a840025fbc41997171cdbb4d01f0a0ba78b221ea239"
+  },
+  "C02-missing-receipt": {
+    "boleto-aluguel.pdf": "b0e0cfc3e624220d72409f09765695f34f528868ace70c3e598e2b86f59ce1c3",
+    "expected.json": "686ccb51d1f9b0e9d90566ead9febada9486577425d916aeab7da2842ffd0978",
+    "extrato-setembro.ofx": "84d726722e7525bde390d72c40d5d5d563b3511f8b37442bf1a9a0ddbe40bfba",
+    "pix-fornecedor-x.pdf": "25663368af0a286cd2919da1abb1b9aecab81e118b27918bc16fd81149697466",
+    "pix-grafica.pdf": "6a39d5664de4c9eb66130bd7ca96b53ed5921d764cb0a0cf45d16268f35f794d",
+    "pix-padaria.pdf": "8a0ba5248766ea0d2741a9225512eb90ac454a274c67f0968dd93497be2f3d7a",
+    "sources.json": "8a3c4be39e5cf43aa06da4651e36a1672cb522d905686e4c8b8dcc811aad768b"
+  },
+  "C03-amount-mismatch": {
+    "expected.json": "1047db82fe8e015d679778fbc9bce1b5f9d619d1ab39a42662e22ca335d189b8",
+    "extrato-setembro.ofx": "65948e97685c1424b2d76dfde1191c784d7233adfaaeb6a8b11575e946b073e7",
+    "pix-construcao.pdf": "57345f3ee672fcd8db52cc81e2020eca1308b0147c72828d23ad92b9abe4a9b8",
+    "pix-fornecedor-x.pdf": "9c93c8e785b7c07969368c0cc34e7b78e1299d56b32e4a4596a6b39f7d1d5a30",
+    "sources.json": "9eb78e3a5a7d833a9b3747e048f08ffac9263b9b03c07c578c59fb46ee2c92c0"
+  },
+  "C04-duplicate": {
+    "expected.json": "ef72a2ff0496972ba87aea9de759c599008617e61b283ccd4b75d1d4b704d15a",
+    "extrato-setembro.ofx": "e37a0644b9271e3be549e3e710ff9c1ea6607c4b381ff6c8a50ec368b920729e",
+    "nfse-445-2via.pdf": "229139b8dcd31c7b46d2e0d07472aade8d04ebce10213aad2720280df532444f",
+    "nfse-445.pdf": "15e6310a6f532236aa75fa5876006e6f8c0de0b45f13576c602a802d49e80d75",
+    "pix-fornecedor-y.pdf": "8caeb57ae909c7298c0f01ee228924e33185530a23c7fd1053078a0fd877d9bd",
+    "pix-fornecedor-z-copia.pdf": "26cdd7af04912950ce27f9fe1948cea8b1af014dc29be7023e074ce07a4d493a",
+    "pix-fornecedor-z.pdf": "26cdd7af04912950ce27f9fe1948cea8b1af014dc29be7023e074ce07a4d493a",
+    "sources.json": "02aa4777ac41e88b8a5c0edd9c0c43472ea865a7cac1274afc720d5cf15143fe"
+  },
+  "C05-document-without-transaction": {
+    "expected.json": "8d361c73b83d54ac356b0c44f7313af0620c23ce03ededaa6f4f3b0bdb6a8dc4",
+    "extrato-setembro.ofx": "aa32066861939ef9eae09e2a1761fd7163954debe7cc5fb0c7bded71fd290455",
+    "nfse-beta.pdf": "56123cabc3f016aed6ea97925268c0fe316738233cd4e0844317b12ce16c1548",
+    "pix-contabilidade.pdf": "9534080732a55184725a8eb2870152b1ce5a4fac65dec4378d74442e0fb0c94f",
+    "pix-eletricista-agosto.pdf": "8cb4af1ddd8e7fde67648604d3515059e02cbee813ecd99f3ac0a951e23d1416",
+    "pix-fornecedor-x.pdf": "dce3fd7c2a9bf7aa215c0179dcdedd1a933719a56fa9feef708fccbe08f1b3a9",
+    "sources.json": "ab81d4a7e19796c22b3bc9e476de9b63365722b93a1fc8cacf281d87eb6b40ef"
+  },
+  "C06-ambiguous-match": {
+    "expected.json": "91859a7a79a19d6d09420076a446d37b4a97179ede3357951a5daf11a0f032fa",
+    "extrato-setembro.ofx": "1a1377f048bd6c23a6490681a772904271e7c666b7a6755a9a0ee7106fb6585b",
+    "pix-fornecedor-x.pdf": "5753bc43b13397964fa6de404d44a35f1d0e824f6b33294cadf2f53900dad9ab",
+    "pix-maria-souza.pdf": "5bc2ea00de873e678843a2c89cc453f88f1a88b469828736c1b714010212b4d5",
+    "sources.json": "0980868d3d71ece1a7863870e5f71a3fefa86418279a6976f6700949b325bc48"
+  },
+  "C07-bad-pdf-balance-fail": {
+    "expected.json": "8445034693212a4a5f2ad766bafce48483394da50fcd65d5a79204978ecd4645",
+    "extrato-setembro.pdf": "52f2209e8282740788cec1fa453bb6f78eac9f64bebac44d5cd5bf0b5c638e93",
+    "pix-fornecedor-x.pdf": "860523f3f8ae7bf90f36e11ed3227114331db934e5da0dcd9999dd4499275d60",
+    "pix-grafica.pdf": "6a62b9574f2087b67fca2d71cd10f1fdfc87785c6d6150a3aee033c38653cfac",
+    "sources.json": "58264f263f5df0eceb0528439c76735cc4501f9531095b29d70cad980ab201de"
+  },
+  "C07b-password-pdf": {
+    "expected.json": "dbb6ce84c91569d60a9357a63476cca6fe0a10aff7079ad0a7e1485e57eeee84",
+    "extrato-protegido.pdf": "610feb3c59cb4e2dd88c3724446d3abba54f9cbe53febc34b83f66a2be8e9ac1",
+    "pix-fornecedor-x.pdf": "aac40590859b53cb924f4ea9fbddb2902af87e5751f75c0b18bf6ed2cf220de9",
+    "sources.json": "48af739baf3dc8da39b89c1a17518a43312bb28694485119e6c87ca812bb2a5f"
+  },
+  "C08-illegible-document": {
+    "expected.json": "db8348698f36538b711f8f3d7530841eea75bd11a1955bbeca78627aeee3796b",
+    "extrato-setembro.ofx": "96f7212f78a6b15844fa10d3c155ce2ae7964be8ca8139092eedbaf7ef5fa41b",
+    "foto-comprovante-tremida.png": "35714f45b21f13aa69e2e11f74e61b0783fa72bf2193cddc511d89e3ade9b914",
+    "pix-construcao.pdf": "21046d7b54a3a3a2314392b2c2b934347e97dbbf4e8bf3723d20ef9549b377bb",
+    "pix-contabilidade.pdf": "b0c0b4995373211a3e114873afbf770945f5360a5f0cc1f512d17db33bc36e5e",
+    "pix-fornecedor-x.pdf": "dee1c1a0b53395d2b513e6e14acb5780dbd7fb725b1bf623a04bf2aee7ba1e74",
+    "pix-grafica.pdf": "11d02ea7860a958e09097e4338a222930dfda454c7943c7de0612340e53a1bac",
+    "print-pix-padaria.png": "60826ba22c5b03c0eecaa2cfeb16236cada2f9ae268c26b4315f68391ce47838",
+    "sources.json": "579ca8854c3a6612214a6196b0230b2d569e3b644abcc2ecd2d3f5f9386b1cbd"
+  },
+  "C09-grouped-payment": {
+    "expected.json": "bf161ce958d9cfb0562f2ecf0ed458bc707d4301d9dfa8f9e15f93526df96f55",
+    "extrato-setembro.ofx": "db27740c06b49863eca2688572ed1c26a9203e2f8baf9672fe34f19e1074721e",
+    "nfe-delta-101.pdf": "34b1a3c563b5cf3b5bc13bde4b6730fa085bd14d45ebfdce52b4ba2517495256",
+    "nfe-delta-102.pdf": "99c7fd31335dfba839524a0341f446ac602d6dc02c5be5b9c80521dd8c6f85df",
+    "nfe-delta-103.pdf": "ea44d3e8431b88ef539b828c6ddbf2a343fbf5386985b6b7a1fc480e3988131f",
+    "nfe-delta-104.pdf": "49cd841e76f08221caa2652c58ed6df30241fb22af5931fc7addc640085320bb",
+    "pix-fornecedor-x.pdf": "27653a16bdc53a97674da78fc24f26dd607f062c2c8f86e71d11058ebca45044",
+    "sources.json": "7ea1fb4a4f2107f026d3b02e29e014249cf301121277c640d48e4cf1d739694f"
+  },
+  "C10-boleto-with-interest": {
+    "boleto-escola-omega.pdf": "7184154d3c16e0f2716cbb3b73b302b5dd8c0c16736449837f30f7d7a6d2fed7",
+    "expected.json": "2fd36ec71091d867cf814de9966b951fa3303782246848ce438e4329f566c849",
+    "extrato-setembro.ofx": "08024b93b8f155af49cce6b96371fc5ffabd4604bd88b62ab668b1cee41a28c8",
+    "pix-fornecedor-x.pdf": "d550fb8d3a40e6851c5f43b320dcebaf2a842c6ff24b89f4c45747653a53173e",
+    "sources.json": "ff3cf3fc1b4426e142f24a301c8662e2b26762fc99e54b7413e90c7b5770f707"
+  },
+  "C11-fees-iof-investment": {
+    "expected.json": "022895b34c9dd73a2236c81681f8148cebe71dfe4d3b228778c8da46d9154635",
+    "extrato-setembro.ofx": "69057c0fd264dbc27daaf6b38d7e9f613f5c94899fd96fccb79099c3a051b613",
+    "pix-contabilidade.pdf": "b7a767494ef3ab461a0a593ebd66c891a90873222892b55226df19706bbf42c4",
+    "sources.json": "9abff88b1e1ab2dc397ada072562b831efc8bc815c95eb5f620e09aa1adb4317"
+  },
+  "C12-prompt-injection": {
+    "expected.json": "b59b7a32ff89a3bf823880b1c8895277ff803c478db743bbb87a30fba64e7a50",
+    "extrato-setembro.ofx": "b22182a2145cc46e99f291343860066c14c7adad5daebc01c6dd79c248df5557",
+    "pix-fornecedor-x.pdf": "b322410012c2e583ae35ce83b18c278de7cd3bf6104f5e7ee9ac364a8b6c3815",
+    "pix-prestador-omega.pdf": "15e0cac5f00ead4ef4dd239c28e71659fc929cb5a381dba41dd292fae200f645",
+    "sources.json": "7542789185e62446a18b8df6be79888bd25ac0455ac57e4f02d82fd009d19414"
+  },
+  "C13-statement-only": {
+    "expected.json": "a21389c988029832d736d699be721431e570b5c0c5eaad32c56dbd3f08e86dc2",
+    "extrato-setembro.ofx": "341f8da7e3b82bdf5a0ba1cf0a5b0da94625cdf3128346e1378ea422ccf88058",
+    "sources.json": "e09d938dcd754861cb78ec4336ba833d5641d94f941121a6e691af01084d77c2"
+  }
+}

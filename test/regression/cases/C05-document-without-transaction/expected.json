@@ -1,0 +1,113 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C05",
+  "slug": "document-without-transaction",
+  "title": "Documento sem lançamento",
+  "description": "Um comprovante de agosto (fora do mês) e uma NFS-e de setembro sem pagamento correspondente no extrato.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "Comprovante de 28/08 sem lançamento",
+      "expect": "finding:unmatched_document"
+    },
+    {
+      "text": "NFS-e de R$ 1.500,00 sem pagamento",
+      "expect": "finding:unmatched_document"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "pix-fornecedor-x.pdf",
+      "pix-contabilidade.pdf",
+      "pix-eletricista-agosto.pdf",
+      "nfse-beta.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    },
+    "pix-contabilidade.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 78000,
+      "date": "2026-09-10",
+      "counterparty": "CONTABILIDADE SILVA ME",
+      "legibility": "ok"
+    },
+    "pix-eletricista-agosto.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 90000,
+      "date": "2026-08-28",
+      "counterparty": "JOSE PEREIRA",
+      "legibility": "ok"
+    },
+    "nfse-beta.pdf": {
+      "docType": "nfse",
+      "amountCents": 150000,
+      "date": "2026-09-20",
+      "counterparty": "CONSULTORIA BETA LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 2,
+    "documents": [
+      {
+        "file": "pix-eletricista-agosto.pdf",
+        "status": "without_transaction"
+      },
+      {
+        "file": "nfse-beta.pdf",
+        "status": "without_transaction"
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C05-01",
+        "doc": "pix-fornecedor-x.pdf"
+      },
+      {
+        "tx": "fitid:C05-02",
+        "doc": "pix-contabilidade.pdf"
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "*",
+        "doc": "pix-eletricista-agosto.pdf"
+      },
+      {
+        "tx": "*",
+        "doc": "nfse-beta.pdf"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "unmatched_document",
+        "doc": "pix-eletricista-agosto.pdf",
+        "why": "planted"
+      },
+      {
+        "type": "unmatched_document",
+        "doc": "nfse-beta.pdf",
+        "why": "planted"
+      }
+    ],
+    "allowedFindings": [
+      {
+        "type": "out_of_period",
+        "doc": "pix-eletricista-agosto.pdf"
+      }
+    ]
+  }
+}

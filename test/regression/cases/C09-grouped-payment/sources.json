@@ -1,0 +1,66 @@
+{
+  "extrato-setembro.ofx": {
+    "kind": "ofx"
+  },
+  "nfe-delta-101.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "DANFE - DOCUMENTO AUXILIAR DA NOTA FISCAL ELETRÔNICA",
+      "NF-e Nº 101",
+      "Data de emissão: 01/09/2026",
+      "Emitente: DISTRIBUIDORA DELTA LTDA",
+      "CNPJ: 22.333.444/0001-55",
+      "Valor total da nota: R$ 1.000,00",
+      "Documento sintético para testes."
+    ]
+  },
+  "nfe-delta-102.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "DANFE - DOCUMENTO AUXILIAR DA NOTA FISCAL ELETRÔNICA",
+      "NF-e Nº 102",
+      "Data de emissão: 05/09/2026",
+      "Emitente: DISTRIBUIDORA DELTA LTDA",
+      "CNPJ: 22.333.444/0001-55",
+      "Valor total da nota: R$ 1.200,00",
+      "Documento sintético para testes."
+    ]
+  },
+  "nfe-delta-103.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "DANFE - DOCUMENTO AUXILIAR DA NOTA FISCAL ELETRÔNICA",
+      "NF-e Nº 103",
+      "Data de emissão: 10/09/2026",
+      "Emitente: DISTRIBUIDORA DELTA LTDA",
+      "CNPJ: 22.333.444/0001-55",
+      "Valor total da nota: R$ 800,00",
+      "Documento sintético para testes."
+    ]
+  },
+  "nfe-delta-104.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "DANFE - DOCUMENTO AUXILIAR DA NOTA FISCAL ELETRÔNICA",
+      "NF-e Nº 104",
+      "Data de emissão: 12/09/2026",
+      "Emitente: DISTRIBUIDORA DELTA LTDA",
+      "CNPJ: 22.333.444/0001-55",
+      "Valor total da nota: R$ 300,00",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-fornecedor-x.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 01/09/2026",
+      "Valor: R$ 1.250,00",
+      "Destinatário: FORNECEDOR X LTDA",
+      "CNPJ: 12.345.678/0001-95",
+      "ID da transação: E0000000020260902",
+      "Documento sintético para testes."
+    ]
+  }
+}

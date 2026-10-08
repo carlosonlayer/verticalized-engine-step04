@@ -1,0 +1,110 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C01",
+  "slug": "perfect-month",
+  "title": "Mês perfeito",
+  "description": "Toda saída tem comprovante correspondente (mesmo valor, mesma data, mesmo favorecido). A entrada não exige documento. Nada a apontar.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "pix-fornecedor-x.pdf",
+      "pix-grafica.pdf",
+      "pix-contabilidade.pdf",
+      "boleto-aluguel.pdf",
+      "pix-padaria.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    },
+    "pix-grafica.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 32000,
+      "date": "2026-09-05",
+      "counterparty": "GRAFICA PAPEL BOM LTDA",
+      "legibility": "ok"
+    },
+    "pix-contabilidade.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 78000,
+      "date": "2026-09-10",
+      "counterparty": "CONTABILIDADE SILVA ME",
+      "legibility": "ok"
+    },
+    "boleto-aluguel.pdf": {
+      "docType": "boleto",
+      "amountCents": 199000,
+      "date": "2026-09-15",
+      "counterparty": "IMOBILIARIA LAR LTDA",
+      "legibility": "ok"
+    },
+    "pix-padaria.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 4500,
+      "date": "2026-09-25",
+      "counterparty": "PADARIA BOA LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 6,
+    "transactions": [
+      {
+        "ref": "fitid:C01-01",
+        "kind": "normal",
+        "status": "matched"
+      },
+      {
+        "ref": "fitid:C01-04",
+        "kind": "normal",
+        "status": "matched"
+      },
+      {
+        "ref": "fitid:C01-05",
+        "kind": "normal",
+        "status": "unmatched_credit"
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C01-01",
+        "doc": "pix-fornecedor-x.pdf"
+      },
+      {
+        "tx": "fitid:C01-02",
+        "doc": "pix-grafica.pdf"
+      },
+      {
+        "tx": "fitid:C01-03",
+        "doc": "pix-contabilidade.pdf"
+      },
+      {
+        "tx": "fitid:C01-04",
+        "doc": "boleto-aluguel.pdf"
+      },
+      {
+        "tx": "fitid:C01-06",
+        "doc": "pix-padaria.pdf"
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "fitid:C01-05",
+        "doc": "*"
+      }
+    ],
+    "requiredFindings": []
+  }
+}

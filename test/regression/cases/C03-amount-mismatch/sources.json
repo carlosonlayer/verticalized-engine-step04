@@ -1,0 +1,31 @@
+{
+  "extrato-setembro.ofx": {
+    "kind": "ofx"
+  },
+  "pix-fornecedor-x.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 01/09/2026",
+      "Valor: R$ 1.250,00",
+      "Destinatário: FORNECEDOR X LTDA",
+      "CNPJ: 12.345.678/0001-95",
+      "ID da transação: E0000000020260301",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-construcao.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 12/09/2026",
+      "Valor: R$ 4.580,00",
+      "Destinatário: CONSTRUCAO E CIA LTDA",
+      "CNPJ: 67.890.123/0001-54",
+      "ID da transação: E0000000020260302",
+      "Documento sintético para testes."
+    ]
+  }
+}

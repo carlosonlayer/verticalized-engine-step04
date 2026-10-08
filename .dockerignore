@@ -1,0 +1,10 @@
+node_modules
+dist
+test
+docs
+supabase
+scripts
+deploy
+.env
+.env.*
+*.log

@@ -1,0 +1,85 @@
+{
+  "extrato-setembro.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "BANCO EXEMPLO S.A. - EXTRATO DE CONTA CORRENTE",
+      "Agência 1234 Conta 12345-6",
+      "Período: 01/09/2026 a 30/09/2026",
+      "Data Histórico Valor (R$) Saldo (R$)",
+      "31/08/2026 SALDO ANTERIOR 10.000,00",
+      "01/09/2026 PIX ENVIADO FORNECEDOR X LTDA -1.250,00 8.750,00",
+      "05/09/2026 PIX ENVIADO GRAFICA PAPEL BOM LTDA -320,00 8.430,00",
+      "10/09/2026 PIX RECEBIDO CLIENTE ALFA LTDA 4.500,00 12.930,00",
+      "20/09/2026 PIX ENVIADO CONTABILIDADE SILVA ME -780,00 10.160,00",
+      "25/09/2026 PIX ENVIADO PADARIA BOA LTDA -45,00 10.115,00",
+      "30/09/2026 SALDO FINAL 10.115,00"
+    ],
+    "statementTruth": {
+      "openingCents": 1000000,
+      "transactions": [
+        {
+          "date": "2026-09-01",
+          "cents": -125000,
+          "desc": "PIX ENVIADO FORNECEDOR X LTDA",
+          "present": true
+        },
+        {
+          "date": "2026-09-05",
+          "cents": -32000,
+          "desc": "PIX ENVIADO GRAFICA PAPEL BOM LTDA",
+          "present": true
+        },
+        {
+          "date": "2026-09-10",
+          "cents": 450000,
+          "desc": "PIX RECEBIDO CLIENTE ALFA LTDA",
+          "present": true
+        },
+        {
+          "date": "2026-09-15",
+          "cents": -199000,
+          "desc": "PAGTO BOLETO IMOBILIARIA LAR LTDA",
+          "present": false
+        },
+        {
+          "date": "2026-09-20",
+          "cents": -78000,
+          "desc": "PIX ENVIADO CONTABILIDADE SILVA ME",
+          "present": true
+        },
+        {
+          "date": "2026-09-25",
+          "cents": -4500,
+          "desc": "PIX ENVIADO PADARIA BOA LTDA",
+          "present": true
+        }
+      ]
+    }
+  },
+  "pix-fornecedor-x.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 01/09/2026",
+      "Valor: R$ 1.250,00",
+      "Destinatário: FORNECEDOR X LTDA",
+      "CNPJ: 12.345.678/0001-95",
+      "ID da transação: E0000000020260701",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-grafica.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 05/09/2026",
+      "Valor: R$ 320,00",
+      "Destinatário: GRAFICA PAPEL BOM LTDA",
+      "CNPJ: 23.456.789/0001-10",
+      "ID da transação: E0000000020260702",
+      "Documento sintético para testes."
+    ]
+  }
+}

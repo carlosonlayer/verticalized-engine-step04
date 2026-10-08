@@ -1,0 +1,78 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C07",
+  "slug": "bad-pdf-balance-fail",
+  "title": "PDF ruim — saldo não fecha",
+  "description": "Extrato em PDF com texto, mas a linha do boleto de R$ 1.990,00 (15/09) se perdeu. Saldo anterior + movimentações lidas ≠ saldo final, e o saldo linha a linha quebra na linha de 20/09. O trabalho NÃO pode ser apresentado como concluído normalmente.",
+  "availableFrom": "STEP_11",
+  "plantedErrors": [
+    {
+      "text": "Linha de 15/09 ausente no PDF",
+      "expect": "finding:balance_failure"
+    },
+    {
+      "text": "Saldo não fecha",
+      "expect": "status:needs_review"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.pdf",
+    "documents": [
+      "pix-fornecedor-x.pdf",
+      "pix-grafica.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    },
+    "pix-grafica.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 32000,
+      "date": "2026-09-05",
+      "counterparty": "GRAFICA PAPEL BOM LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "needs_review",
+    "reviewReasonsInclude": [
+      "balance_failure"
+    ],
+    "balanceCheck": "failed",
+    "transactionCount": 5,
+    "confirmedMatches": [
+      {
+        "tx": "tx:2026-09-01|-125000",
+        "doc": "pix-fornecedor-x.pdf"
+      },
+      {
+        "tx": "tx:2026-09-05|-32000",
+        "doc": "pix-grafica.pdf"
+      }
+    ],
+    "forbiddenConfirmations": [],
+    "requiredFindings": [
+      {
+        "type": "balance_failure",
+        "why": "planted"
+      }
+    ],
+    "allowedFindings": [
+      {
+        "type": "missing_receipt",
+        "tx": [
+          "tx:2026-09-20|-78000",
+          "tx:2026-09-25|-4500"
+        ]
+      }
+    ]
+  }
+}

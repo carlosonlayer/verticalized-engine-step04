@@ -1,0 +1,30 @@
+{
+  "extrato-setembro.ofx": {
+    "kind": "ofx"
+  },
+  "pix-maria-souza.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 12/09/2026",
+      "Valor: R$ 500,00",
+      "Destinatário: MARIA SOUZA",
+      "ID da transação: E000000002026601",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-fornecedor-x.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 01/09/2026",
+      "Valor: R$ 1.250,00",
+      "Destinatário: FORNECEDOR X LTDA",
+      "CNPJ: 12.345.678/0001-95",
+      "ID da transação: E0000000020260603",
+      "Documento sintético para testes."
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C06",
+  "slug": "ambiguous-match",
+  "title": "Pagamento ambíguo",
+  "description": "Duas saídas de R$ 500,00 no mesmo dia para favorecidos parecidos (MARIA SOUZA e MARIA SOUZA ME) e UM comprovante para MARIA SOUZA. Não há evidência suficiente para escolher: nenhuma pode ser confirmada.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "Dois candidatos com mesmo valor e data",
+      "expect": "forbidden_confirmation"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "pix-maria-souza.pdf",
+      "pix-fornecedor-x.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-maria-souza.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 50000,
+      "date": "2026-09-12",
+      "counterparty": "MARIA SOUZA",
+      "legibility": "ok"
+    },
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 3,
+    "transactions": [
+      {
+        "ref": "fitid:C06-01",
+        "statusAnyOf": [
+          "needs_confirmation",
+          "missing_receipt"
+        ]
+      },
+      {
+        "ref": "fitid:C06-02",
+        "statusAnyOf": [
+          "needs_confirmation",
+          "missing_receipt"
+        ]
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C06-03",
+        "doc": "pix-fornecedor-x.pdf"
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "fitid:C06-01",
+        "doc": "pix-maria-souza.pdf"
+      },
+      {
+        "tx": "fitid:C06-02",
+        "doc": "pix-maria-souza.pdf"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "needs_confirmation",
+        "doc": "pix-maria-souza.pdf",
+        "why": "planted"
+      }
+    ],
+    "allowedFindings": [
+      {
+        "type": "needs_confirmation",
+        "tx": [
+          "fitid:C06-01",
+          "fitid:C06-02"
+        ]
+      },
+      {
+        "type": "missing_receipt",
+        "tx": [
+          "fitid:C06-01",
+          "fitid:C06-02"
+        ]
+      },
+      {
+        "type": "duplicate_transaction",
+        "tx": [
+          "fitid:C06-01",
+          "fitid:C06-02"
+        ]
+      },
+      {
+        "type": "payment_duplication",
+        "doc": "pix-maria-souza.pdf"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C07b",
+  "slug": "password-pdf",
+  "title": "Extrato em PDF protegido por senha",
+  "description": "O extrato está protegido por senha. Deve ser recusado na entrada (422), com mensagem clara, sem criar resultado parcial.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "PDF com senha",
+      "expect": "outcome:rejected"
+    }
+  ],
+  "input": {
+    "statement": "extrato-protegido.pdf",
+    "documents": [
+      "pix-fornecedor-x.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "rejected",
+      "code": "PDF_PASSWORD",
+      "file": "extrato-protegido.pdf"
+    }
+  }
+}

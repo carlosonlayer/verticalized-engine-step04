@@ -1,0 +1,83 @@
+{
+  "extrato-setembro.ofx": {
+    "kind": "ofx"
+  },
+  "pix-fornecedor-x.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 01/09/2026",
+      "Valor: R$ 1.250,00",
+      "Destinatário: FORNECEDOR X LTDA",
+      "CNPJ: 12.345.678/0001-95",
+      "ID da transação: E0000000020260801",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-grafica.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 05/09/2026",
+      "Valor: R$ 320,00",
+      "Destinatário: GRAFICA PAPEL BOM LTDA",
+      "CNPJ: 23.456.789/0001-10",
+      "ID da transação: E0000000020260802",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-contabilidade.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 10/09/2026",
+      "Valor: R$ 780,00",
+      "Destinatário: CONTABILIDADE SILVA ME",
+      "CNPJ: 34.567.890/0001-21",
+      "ID da transação: E0000000020260803",
+      "Documento sintético para testes."
+    ]
+  },
+  "pix-construcao.pdf": {
+    "kind": "pdf_text",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 12/09/2026",
+      "Valor: R$ 4.850,00",
+      "Destinatário: CONSTRUCAO E CIA LTDA",
+      "CNPJ: 67.890.123/0001-54",
+      "ID da transação: E0000000020260804",
+      "Documento sintético para testes."
+    ]
+  },
+  "print-pix-padaria.png": {
+    "kind": "png",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 25/09/2026",
+      "Valor: R$ 45,00",
+      "Destinatário: PADARIA BOA LTDA",
+      "CNPJ: 56.789.012/0001-43",
+      "ID da transação: E000000002026805",
+      "Documento sintético para testes."
+    ]
+  },
+  "foto-comprovante-tremida.png": {
+    "kind": "png_illegible",
+    "textLines": [
+      "COMPROVANTE DE TRANSFERÊNCIA PIX",
+      "Banco Exemplo S.A.",
+      "Data do pagamento: 28/09/2026",
+      "Valor: R$ 670,00",
+      "Destinatário: FORNECEDOR Z LTDA",
+      "CNPJ: 89.012.345/0001-76",
+      "ID da transação: E000000002026806",
+      "Documento sintético para testes."
+    ]
+  }
+}

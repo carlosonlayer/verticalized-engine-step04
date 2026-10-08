@@ -1,0 +1,52 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 639 >>
+stream
+BT
+/F1 11 Tf
+15 TL
+50 790 Td
+(BANCO EXEMPLO S.A. - EXTRATO DE CONTA CORRENTE) Tj
+T* (Agência 1234 Conta 12345-6) Tj
+T* (Período: 01/09/2026 a 30/09/2026) Tj
+T* (Data Histórico Valor \(R$\) Saldo \(R$\)) Tj
+T* (31/08/2026 SALDO ANTERIOR 10.000,00) Tj
+T* (01/09/2026 PIX ENVIADO FORNECEDOR X LTDA -1.250,00 8.750,00) Tj
+T* (05/09/2026 PIX ENVIADO GRAFICA PAPEL BOM LTDA -320,00 8.430,00) Tj
+T* (10/09/2026 PIX RECEBIDO CLIENTE ALFA LTDA 4.500,00 12.930,00) Tj
+T* (20/09/2026 PIX ENVIADO CONTABILIDADE SILVA ME -780,00 10.160,00) Tj
+T* (25/09/2026 PIX ENVIADO PADARIA BOA LTDA -45,00 10.115,00) Tj
+T* (30/09/2026 SALDO FINAL 10.115,00) Tj
+ET
+endstream
+endobj
+6 0 obj
+<< /Producer (VERTICALIZED regression dataset) /Title (Extrato) >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000247 00000 n 
+0000000344 00000 n 
+0000001033 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R /Info 6 0 R >>
+startxref
+1115
+%%EOF

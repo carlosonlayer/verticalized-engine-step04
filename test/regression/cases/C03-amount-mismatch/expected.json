@@ -1,0 +1,84 @@
+{
+  "$schema": "../../harness/case-schema.ts",
+  "id": "C03",
+  "slug": "amount-mismatch",
+  "title": "Valor divergente",
+  "description": "Extrato R$ 4.850,00; comprovante do mesmo favorecido, mesma data, R$ 4.580,00 (dígitos trocados). Diferença R$ 270,00. NÃO pode virar par confirmado.",
+  "availableFrom": "STEP_07",
+  "plantedErrors": [
+    {
+      "text": "Extrato 4.850,00 × documento 4.580,00",
+      "expect": "finding:amount_divergence"
+    },
+    {
+      "text": "Par com valor diferente não pode ser confirmado",
+      "expect": "forbidden_confirmation"
+    }
+  ],
+  "input": {
+    "statement": "extrato-setembro.ofx",
+    "documents": [
+      "pix-fornecedor-x.pdf",
+      "pix-construcao.pdf"
+    ]
+  },
+  "documentsTruth": {
+    "pix-fornecedor-x.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 125000,
+      "date": "2026-09-01",
+      "counterparty": "FORNECEDOR X LTDA",
+      "legibility": "ok"
+    },
+    "pix-construcao.pdf": {
+      "docType": "pix_receipt",
+      "amountCents": 458000,
+      "date": "2026-09-12",
+      "counterparty": "CONSTRUCAO E CIA LTDA",
+      "legibility": "ok"
+    }
+  },
+  "expect": {
+    "outcome": {
+      "kind": "result"
+    },
+    "status": "completed",
+    "balanceCheck": "structural_only",
+    "transactionCount": 3,
+    "transactions": [
+      {
+        "ref": "fitid:C03-02",
+        "status": "divergent"
+      }
+    ],
+    "documents": [
+      {
+        "file": "pix-construcao.pdf",
+        "amountCents": 458000
+      }
+    ],
+    "confirmedMatches": [
+      {
+        "tx": "fitid:C03-01",
+        "doc": "pix-fornecedor-x.pdf"
+      }
+    ],
+    "forbiddenConfirmations": [
+      {
+        "tx": "fitid:C03-02",
+        "doc": "pix-construcao.pdf"
+      }
+    ],
+    "requiredFindings": [
+      {
+        "type": "amount_divergence",
+        "tx": "fitid:C03-02",
+        "doc": "pix-construcao.pdf",
+        "expectedCents": 485000,
+        "foundCents": 458000,
+        "diffCents": 27000,
+        "why": "planted"
+      }
+    ]
+  }
+}
